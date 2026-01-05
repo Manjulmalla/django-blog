@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>404 - Page Not Found</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+        z-index: 2;
+    }
+
+    .error {
+        font-size: 140px;
+        font-weight: bold;
+        letter-spacing: 10px;
+        animation: bounce 2s infinite;
+        text-shadow: 0 0 20px rgba(0,255,255,0.7);
+    }
+
+    .message {
+        font-size: 24px;
+        margin-top: 10px;
+        opacity: 0;
+        animation: fadeIn 2s forwards 1s;
+    }
+
+    .home-btn {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 12px 30px;
+        border: 2px solid #00e6e6;
+        color: #00e6e6;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 2s forwards 1.5s;
+    }
+
+    .home-btn:hover {
+        background: #00e6e6;
+        color: #000;
+        box-shadow: 0 0 20px #00e6e6;
+    }
+
+    /* Floating background numbers */
+    .floating {
+        position: absolute;
+        font-size: 80px;
+        color: rgba(255,255,255,0.05);
+        animation: float 8s infinite linear;
+    }
+
+    .floating:nth-child(1) { left: 10%; animation-duration: 10s; }
+    .floating:nth-child(2) { left: 30%; animation-duration: 14s; }
+    .floating:nth-child(3) { left: 60%; animation-duration: 12s; }
+    .floating:nth-child(4) { left: 80%; animation-duration: 16s; }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+
+    @keyframes float {
+        0% { bottom: -100px; }
+        100% { bottom: 110%; }
+    }
+</style>
+</head>
+
+<body>
+
+    <!-- Floating background elements -->
+    <div class="floating">404</div>
+    <div class="floating">404</div>
+    <div class="floating">404</div>
+    <div class="floating">404</div>
+
+    <div class="container">
+        <div class="error">404</div>
+        <div class="message">Oops! Page Not Found</div>
+        <a href="/" class="home-btn">Go Home</a>
+    </div>
+
+</body>
+</html>
