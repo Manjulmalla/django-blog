@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+<div class="row">
+
+    <!--left sidebar-->
+    <!--load sidebar-->
+{% include "dashboard/sidebar.html" %}
+
+<!--right sidebar-->
+    
+  <div class="col-md-9 bg-light">
+    {% if perms.auth.view_user %}
+  
+      <h4>All Users
+        <a href=" {% url "add_user" %} " class="btn btn-dark text-light float-right mb-1 mt-1"><i class="fa fa-plus" text-success> User</i></a>
+      </h4>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th>Status</th>
+            <th>Staff</th>
+            <th scope="col">SuperUser</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+        {% for cat in users%}
+          <tr>
+            <th>{{forloop.counter}}</th>
+            <td>{{cat.first_name}} {{cat.last_name}}</td>
+            <td>"{{cat.username}}"</td>
+            <td>{{cat.email}}</td>
+            <td> {% if cat.is_active %}<i class="fa fa-check text-success"></i> {% else %} <i class="fa fa-times text-danger"></i> {% endif %} </td>
+            <td> {% if cat.is_staff %}<i class="fa fa-check text-success"></i> {% else %} <i class="fa fa-times text-danger"></i> {% endif %} </td>
+            <td>{% if cat.is_superuser %}<i class="fa fa-check text-success"></i> {% else %} <i class="fa fa-times text-danger"></i> {% endif %}</td>
+            <td>
+                <a href=" {% url "edit_user" cat.id %} "><i class="fa fa-edit text-success"></i></a>
+                &nbsp;
+                <a href=" {% url "delete_user" cat.id %} "><i class="fa fa-trash text-danger"></i></a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h5>no permission</h5>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock content %}
+
